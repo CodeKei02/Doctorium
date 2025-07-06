@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Consultorio {
   id: string;
@@ -18,7 +18,7 @@ const consultoriosSlice = createSlice({
   name: "consultorios",
   initialState,
   reducers: {
-    setConsultorios: (state: any, action: any) => {
+    setConsultorios: (state, action: PayloadAction<Consultorio[]>) => {
       state.consultorios = action.payload;
     },
     addConsultorio: (state, action) => {

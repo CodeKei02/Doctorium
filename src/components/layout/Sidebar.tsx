@@ -6,27 +6,27 @@ import { Avatar } from "../ui/Avatar";
 
 const links = [
   {
-    icon: "./images/sprite.svg#inicio-icon",
+    icon: "/images/sprite.svg#inicio-icon",
     label: "Inicio",
     href: "/",
   },
   {
-    icon: "./images/sprite.svg#calendario-icon",
+    icon: "/images/sprite.svg#calendario-icon",
     label: "Calendario",
     href: "/calendario",
   },
   {
-    icon: "./images/sprite.svg#consultorios-icon",
+    icon: "/images/sprite.svg#consultorios-icon",
     label: "Consultorios",
     href: "/consultorios",
   },
   {
-    icon: "./images/sprite.svg#pacientes-icon",
+    icon: "/images/sprite.svg#pacientes-icon",
     label: "Pacientes",
     href: "/pacientes",
   },
   {
-    icon: "./images/sprite.svg#plantillas-icon",
+    icon: "/images/sprite.svg#plantillas-icon",
     label: "Plantillas Episodios",
     href: "/plantillas",
   },
@@ -60,7 +60,7 @@ export const Sidebar = () => {
             }}
           >
             <svg className="w-4 h-4">
-              <use href="./images/sprite.svg#button-icon" />
+              <use href="/images/sprite.svg#button-icon" />
             </svg>
           </button>
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
@@ -69,7 +69,7 @@ export const Sidebar = () => {
         <div className="flex items-center justify-between space-x-3">
           <div className="flex items-center ">
             <span className="text-sm text-gray-600">Dr. Carlos Mendoza</span>
-            <Avatar name="Carlos Mendoza" size="8" />
+            <Avatar name="Carlos Mendoza" size="10" />
           </div>
         </div>
       </header>
@@ -94,7 +94,7 @@ export const Sidebar = () => {
           ref={asideRef}
         >
           <img
-            src="/images/sidebar/medidoc-logo-white.jpg"
+            src="/images/sidebar/docguia-logo-white.jpg"
             className="w-30 my-3"
           />
           <ul className="space-y-4 font-medium">

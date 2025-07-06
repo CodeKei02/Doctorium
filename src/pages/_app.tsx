@@ -15,7 +15,7 @@ const AppContent = ({
   return (
     <div className={`min-h-screen bg-gray-50 ${isOpen ? "md:ml-64" : ""}`}>
       <Sidebar />
-      <main className="pt-5 px-4 max-w-full overflow-hidden">
+      <main className="pt-5 mb-4 px-4 max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <Component {...pageProps} />
         </div>

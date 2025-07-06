@@ -1,5 +1,5 @@
 import { Headline } from "../ui/Headline";
-import { CustomerList } from "../dashboard/CustomerList";
+import { CompanyList } from "../dashboard/CompanyList";
 export const MedicalSpacesCard = () => {
   return (
     <>
@@ -12,7 +12,7 @@ export const MedicalSpacesCard = () => {
           },
         ]}
       />
-      <CustomerList />
+      <CompanyList />
     </>
   );
 };

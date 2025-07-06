@@ -29,7 +29,7 @@ export const Grid = ({ items }: { items: any[] }) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
       {content.map((item) => (
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2" key={item.id}>
           <svg className={`w-4 h-4 ${item.color}`}>
             <use href={`/images/sprite.svg#${item.icon}`} />
           </svg>

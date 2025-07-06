@@ -1,4 +1,72 @@
+import { Button } from "@/components/ui/Button";
+import { CustomSelect } from "@/components/ui/CustomSelect";
 import { useRouter } from "next/router";
+
+const days = [
+  {
+    name: "Lunes",
+    horarios: [
+      {
+        hora: "08:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+  {
+    name: "Martes",
+    horarios: [
+      {
+        hora: "08:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+  {
+    name: "Miercoles",
+    horarios: [
+      {
+        hora: "08:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+  {
+    name: "Jueves",
+    horarios: [
+      {
+        hora: "08:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+  {
+    name: "Viernes",
+    horarios: [
+      {
+        hora: "08:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+  {
+    name: "Sabado",
+    horarios: [
+      {
+        hora: "05:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+  {
+    name: "Domingo",
+    horarios: [
+      {
+        hora: "07:00",
+        horaHasta: "09:00",
+      },
+    ],
+  },
+];
 
 const DisponibilidadConsultorio = () => {
   const router = useRouter();
@@ -10,208 +78,47 @@ const DisponibilidadConsultorio = () => {
         <h1 className="text-2xl font-bold">
           Disponibilidad - Consultorio {id}
         </h1>
-        <button
-          onClick={() => router.back()}
-          className="px-4 py-2 text-gray-600 hover:text-gray-800"
-        >
-          ← Volver
-        </button>
+        <Button onClick={() => router.back()}>← Volver</Button>
       </div>
-      {/* Configuración de disponibilidad */}
       <div className="bg-white rounded-lg p-6 shadow-sm">
         <h2 className="text-lg font-semibold mb-4">Horarios de Atención</h2>
         <div className="space-y-4">
-          {/* Lunes */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="lunes"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-                defaultChecked
-              />
-              <label htmlFor="lunes" className="font-medium">
-                Lunes
-              </label>
+          {days.map((day, index) => (
+            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+              <div key={index} className="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id={day.name}
+                  className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
+                  defaultChecked
+                />
+                <label htmlFor={day.name} className="font-medium">
+                  {day.name}
+                </label>
+              </div>
+              <div className="flex items-center space-x-3">
+                {day.horarios.map((horario, index) => (
+                  <>
+                    <input
+                      type="time"
+                      id={horario.hora}
+                      name={horario.hora}
+                      value={horario.hora}
+                      className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
+                    />
+                    <span className="text-gray-500">-</span>
+                    <input
+                      type="time"
+                      id={horario.horaHasta}
+                      name={horario.horaHasta}
+                      value={horario.horaHasta}
+                      className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
+                    />
+                  </>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="17:00"
-              />
-            </div>
-          </div>
-          {/* Martes */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="martes"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-                defaultChecked
-              />
-              <label htmlFor="martes" className="font-medium">
-                Martes
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="17:00"
-              />
-            </div>
-          </div>
-          {/* Miércoles */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="miercoles"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-                defaultChecked
-              />
-              <label htmlFor="miercoles" className="font-medium">
-                Miércoles
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="17:00"
-              />
-            </div>
-          </div>
-          {/* Jueves */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="jueves"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-                defaultChecked
-              />
-              <label htmlFor="jueves" className="font-medium">
-                Jueves
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="17:00"
-              />
-            </div>
-          </div>
-          {/* Viernes */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="viernes"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-                defaultChecked
-              />
-              <label htmlFor="viernes" className="font-medium">
-                Viernes
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="17:00"
-              />
-            </div>
-          </div>
-          {/* Sábado */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="sabado"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-              />
-              <label htmlFor="sabado" className="font-medium">
-                Sábado
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-                disabled
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="12:00"
-                disabled
-              />
-            </div>
-          </div>
-          {/* Domingo */}
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="domingo"
-                className="rounded border-gray-300 text-[var(--primary-color)] focus:ring-[var(--primary-color)]"
-              />
-              <label htmlFor="domingo" className="font-medium">
-                Domingo
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="08:00"
-                disabled
-              />
-              <span className="text-gray-500">a</span>
-              <input
-                type="time"
-                className="px-2 py-1 border border-gray-300 rounded text-sm"
-                defaultValue="12:00"
-                disabled
-              />
-            </div>
-          </div>
+          ))}
         </div>
         <div className="flex gap-3 pt-6">
           <button

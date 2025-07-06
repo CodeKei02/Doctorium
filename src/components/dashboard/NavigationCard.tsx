@@ -1,36 +1,32 @@
 import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
 
-const links = [
-  {
-    icon: "./images/sprite.svg#consultorios-icon",
-    label: "Gestionar Consultorios",
-    href: "/consultorios#consultorios",
-  },
-  {
-    icon: "./images/sprite.svg#pacientes-icon",
-    label: "Gestionar Pacientes",
-    href: "/pacientes",
-  },
-  {
-    icon: "./images/sprite.svg#calendario-icon",
-    label: "Gestionar Citas",
-    href: "/citas",
-  },
-  {
-    icon: "./images/sprite.svg#plantillas-icon",
-    label: "Gestionar Plantillas",
-    href: "/plantillas",
-  },
-];
+interface Link {
+  icon: string;
+  label: string;
+  href: string;
+}
 
-export const NavigationCard = () => {
+export const NavigationCard = ({ links }: { links?: Link[] }) => {
+  if (!links || links.length === 0) {
+    return (
+      <Card>
+        <h3 className="text-2xl font-semibold leading-none tracking-tight">
+          Acciones Rapidas
+        </h3>
+        <div className="mt-5">
+          <p className="text-gray-500">No hay acciones disponibles</p>
+        </div>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <h3 className="text-2xl font-semibold leading-none tracking-tight">
         Acciones Rapidas
       </h3>
-      <div className="flex flex-col gap-2 mt-5">
+      <div className="flex flex-col gap-2 mt-5 ">
         {links.map((link) => (
           <Button
             key={link.label}

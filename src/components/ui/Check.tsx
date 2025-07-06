@@ -13,6 +13,7 @@ export const Check = ({
 }) => {
   return (
     <button
+      type="button"
       className={`flex items-center px-0.5 w-10 h-6 rounded-full cursor-pointer justify-start ${
         !checked ? " bg-gray-200" : "bg-[var(--primary-color)]"
       }`}

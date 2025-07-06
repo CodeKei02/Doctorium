@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export const Card: React.FC<{ children: any; style?: string }> = ({
   children,
-  style = "w-full border border-gray-200 rounded-lg p-4 hover:shadow-md",
+  style = "",
 }) => {
   return (
     <motion.div
@@ -10,7 +10,7 @@ export const Card: React.FC<{ children: any; style?: string }> = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.01 }}
-      className={style}
+      className={`w-full min-w-0 flex-shrink border border-gray-200 rounded-lg p-2 2xs:p-3 2md:p-4 hover:shadow-md overflow-hidden ${style}`}
     >
       {children}
     </motion.div>
