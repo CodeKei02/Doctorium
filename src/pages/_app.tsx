@@ -11,7 +11,7 @@ const AppContent = ({
 }: Pick<AppProps, "Component" | "pageProps">) => {
   const { isOpen } = useSidebar();
   return (
-    <div className={`min-h-screen bg-gray-50 ${isOpen ? "md:ml-64" : ""}`}>
+    <div className={`min-h-screen mb-5 bg-gray-50 ${isOpen ? "md:ml-64" : ""}`}>
       <Sidebar />
       <main className="pt-5 px-4 max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
