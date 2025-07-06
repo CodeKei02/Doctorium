@@ -1,6 +1,7 @@
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useSidebar } from "@/hooks/useSidebar";
 import Link from "next/link";
+import Image from "next/image";
 import { RefObject, useRef } from "react";
 import { Avatar } from "../ui/Avatar";
 
@@ -93,8 +94,11 @@ export const Sidebar = () => {
           className="h-full flex flex-col gap-5 pl-5 px-3 py-4 overflow-y-auto border-amber-50 bg-[hsl(262,100%,10%)] border-r-2 text-white"
           ref={asideRef}
         >
-          <img
+          <Image
             src="/images/sidebar/docguia-logo-white.jpg"
+            alt="DocGuia Logo"
+            width={120}
+            height={40}
             className="w-30 my-3"
           />
           <ul className="space-y-4 font-medium">

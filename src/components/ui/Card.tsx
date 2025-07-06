@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const Card: React.FC<{ children: any; style?: string }> = ({
+export const Card: React.FC<{ children: React.ReactNode; style?: string }> = ({
   children,
   style = "",
 }) => {

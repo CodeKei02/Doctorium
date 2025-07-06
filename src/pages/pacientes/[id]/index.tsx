@@ -131,12 +131,13 @@ const PacienteDetalle = () => {
       <div className="flex items-center justify-between">
         <Button
           linkTo="/pacientes"
-          children={<p>← Volver</p>}
           others="border border-gray-300 px-4 py-2 rounded-md"
-        />
+        >
+          <p>← Volver</p>
+        </Button>
       </div>
       {paciente && <CustomerList key={paciente.id} customers={[paciente]} />}
-      <Breadcrumb tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab}>
+      <Breadcrumb tabs={tabs} onTabChange={setActiveTab}>
         {activeTab === "General" ? (
           <>
             {infoSalud.map((info) => (

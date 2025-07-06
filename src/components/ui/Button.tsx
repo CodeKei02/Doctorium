@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export const Button: React.FC<{
   others?: string;
-  linkTo?: string | Object;
-  children: React.ReactNode;
+  linkTo?: string;
+  children: React.ReactNode | string;
   onClick?: () => void;
 }> = ({ others, children, linkTo, onClick }) => {
   if (linkTo) {

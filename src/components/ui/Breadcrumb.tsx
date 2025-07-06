@@ -7,14 +7,12 @@ import { useState } from "react";
 interface BreadcrumbProps {
   tabs: { label: string }[];
   children: React.ReactNode;
-  activeTab: string;
   onTabChange: (tab: string) => void;
 }
 
 export default function Breadcrumb({
   tabs,
   children,
-  activeTab,
   onTabChange,
 }: BreadcrumbProps) {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);

@@ -58,8 +58,8 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
           form,
           meta,
         }: {
-          form: FormikProps<any>;
-          meta: FieldMetaProps<any>;
+          form: FormikProps<Record<string, unknown>>;
+          meta: FieldMetaProps<unknown>;
         }) => (
           <div className="relative" ref={dropdownRef}>
             <button

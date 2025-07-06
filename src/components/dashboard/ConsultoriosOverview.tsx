@@ -36,10 +36,11 @@ export const ConsultoriosOverview = () => {
             key={card.title}
             title={card.title}
             number={Number(card.number)}
-            children={<p className="text-xs text-gray-600">{card.text}</p>}
             icon={card.svg}
             color="text-gray-600"
-          />
+          >
+            <p className="text-xs text-gray-600">{card.text}</p>
+          </StatCard>
         ))}
       </div>
       <MedicalSpacesCard />

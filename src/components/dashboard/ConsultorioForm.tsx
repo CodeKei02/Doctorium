@@ -53,7 +53,7 @@ const ConsultorioForm = ({
   children,
 }: {
   initialState: object;
-  children?: unknown[] | null;
+  children?: [] | null;
 }) => {
   const baseContentItems: ContentItem[] = [
     {
@@ -152,7 +152,7 @@ const ConsultorioForm = ({
     },
     {
       title: "Crear Consultorio",
-      onClick: () => add(initialState),
+      onClick: () => add([]),
       others:
         "px-4 py-2 text-gray-600 border border-gray-300 bg-[var(--primary-color)] text-white rounded-md hover:text-black",
     },
@@ -170,7 +170,7 @@ const ConsultorioForm = ({
       <div className="flex flex-col gap-4">
         <Formik initialValues={initialState} onSubmit={() => {}}>
           <Form>
-            {contentItems.map((item) => (
+            {contentItems.map((item: ContentItem) => (
               <Card
                 key={item.title}
                 style="mb-4 pl-5 border border-gray-200 rounded-lg p-2 gap-2 "
@@ -199,7 +199,13 @@ const ConsultorioForm = ({
                           <CustomSelect
                             name={subItem.name}
                             label={subItem.label}
-                            options={(subItem as any).options}
+                            options={
+                              (
+                                subItem as {
+                                  options: { value: string; label: string }[];
+                                }
+                              ).options
+                            }
                             required={true}
                             className="w-32"
                           />

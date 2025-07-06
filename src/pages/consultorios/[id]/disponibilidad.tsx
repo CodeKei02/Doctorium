@@ -83,7 +83,10 @@ const DisponibilidadConsultorio = () => {
         <h2 className="text-lg font-semibold mb-4">Horarios de Atención</h2>
         <div className="space-y-4">
           {days.map((day, index) => (
-            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+            <div
+              key={index}
+              className="flex items-center justify-between p-3 border border-gray-200 rounded-lg"
+            >
               <div key={index} className="flex items-center space-x-3">
                 <input
                   type="checkbox"
@@ -96,7 +99,7 @@ const DisponibilidadConsultorio = () => {
                 </label>
               </div>
               <div className="flex items-center space-x-3">
-                {day.horarios.map((horario, index) => (
+                {day.horarios.map((horario) => (
                   <>
                     <input
                       type="time"

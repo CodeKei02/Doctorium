@@ -12,11 +12,11 @@ export const useConsultorios = () => {
     (state: RootState) => state.consultorios.consultorios
   );
 
-  const add = (consultorio: any) => {
+  const add = (consultorio: []) => {
     dispatch(addConsultorio(consultorio));
   };
 
-  const update = (consultorio: any) => {
+  const update = (consultorio: []) => {
     dispatch(updateConsultorio(consultorio));
   };
 
