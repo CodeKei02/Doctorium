@@ -12,12 +12,12 @@ export const useConsultorios = () => {
     (state: RootState) => state.consultorios.consultorios
   );
 
-  const add = (consultorios: any) => {
-    dispatch(addConsultorio(consultorios));
+  const add = (consultorio: any) => {
+    dispatch(addConsultorio(consultorio));
   };
 
-  const update = (consultorios: []) => {
-    dispatch(updateConsultorio(consultorios));
+  const update = (consultorio: any) => {
+    dispatch(updateConsultorio(consultorio));
   };
 
   const delet = (id: string) => {

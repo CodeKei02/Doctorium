@@ -11,14 +11,7 @@ interface InputProps {
   icon?: string;
 }
 
-export const Input = ({
-  title,
-  name,
-  label,
-  type,
-  placeholder,
-  icon,
-}: InputProps) => {
+export const Input = ({ name, label, type, placeholder }: InputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (

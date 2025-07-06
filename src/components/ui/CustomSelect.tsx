@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Field } from "formik";
+import { Field, FormikProps, FieldMetaProps } from "formik";
 
 interface SelectOption {
   value: string | number;
@@ -54,7 +54,13 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       )}
 
       <Field name={name}>
-        {({ form, meta }: any) => (
+        {({
+          form,
+          meta,
+        }: {
+          form: FormikProps<any>;
+          meta: FieldMetaProps<any>;
+        }) => (
           <div className="relative" ref={dropdownRef}>
             <button
               type="button"

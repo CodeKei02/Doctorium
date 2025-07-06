@@ -8,7 +8,7 @@ interface StatCardProps {
     percentage: number;
     label: string;
   };
-  children?: any;
+  children?: React.ReactNode;
 }
 
 export const StatCard = ({

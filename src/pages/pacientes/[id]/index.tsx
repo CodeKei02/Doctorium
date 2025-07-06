@@ -69,7 +69,7 @@ const PacienteDetalle = () => {
   const [paciente, setPaciente] = useState<Paciente | null>(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("General"); // Agregar este estado
+  const [activeTab, setActiveTab] = useState("General");
 
   useEffect(() => {
     if (id) {
@@ -131,13 +131,11 @@ const PacienteDetalle = () => {
       <div className="flex items-center justify-between">
         <Button
           linkTo="/pacientes"
-          children="← Volver"
+          children={<p>← Volver</p>}
           others="border border-gray-300 px-4 py-2 rounded-md"
         />
       </div>
-      {pacientesSimulados.map((paciente) => (
-        <CustomerList key={paciente.id} customers={pacientesSimulados} />
-      ))}
+      {paciente && <CustomerList key={paciente.id} customers={[paciente]} />}
       <Breadcrumb tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab}>
         {activeTab === "General" ? (
           <>
@@ -148,8 +146,11 @@ const PacienteDetalle = () => {
                     Alergias conocidas
                   </h1>
                   <div className="flex flex-wrap gap-2 rounded-md">
-                    {info.alergias.map((alergia) => (
-                      <p className="text-sm text-red-700 bg-red-100 p-2 rounded-md">
+                    {info.alergias.map((alergia, index) => (
+                      <p
+                        key={index}
+                        className="text-sm text-red-700 bg-red-100 p-2 rounded-md"
+                      >
                         {alergia}
                       </p>
                     ))}

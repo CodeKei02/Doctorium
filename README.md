@@ -26,24 +26,6 @@ DocGuia es una aplicación web moderna desarrollada con Next.js que permite a lo
 - 🔔 Notificaciones automáticas
 ```
 
-### 4. **Capturas de Pantalla**
-
-```markdown
-## 🖼️ Capturas de Pantalla
-
-### Dashboard Principal
-
-![Dashboard](screenshots/dashboard.png)
-
-### Gestión de Pacientes
-
-![Pacientes](screenshots/patients.png)
-
-### Configuración de Horarios
-
-![Horarios](screenshots/schedule.png)
-```
-
 ### 5. **Características Principales**
 
 ```markdown
@@ -67,8 +49,6 @@ DocGuia es una aplicación web moderna desarrollada con Next.js que permite a lo
 
 - Agendar citas por consultorio
 - Calendario interactivo
-- Notificaciones automáticas
-- Gestión de disponibilidad
 
 ### 🎨 Interfaz de Usuario
 
@@ -260,54 +240,3 @@ screens: {
    - Revisa información médica
    - Gestiona citas y tratamientos
 ````
-
-### 12. **Contribución**
-
-```markdown
-## 🤝 Contribución
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-### Guías de Contribución
-
-- Sigue las convenciones de código existentes
-- Agrega tests para nuevas funcionalidades
-- Actualiza la documentación según sea necesario
-- Usa commits descriptivos
-```
-
-### 13. **Licencia**
-
-```markdown
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para detalles.
-```
-
-### 14. **Contacto**
-
-```markdown
-## 📞 Contacto
-
-- **Desarrollador**: Tu Nombre
-- **Email**: tu-email@ejemplo.com
-- **LinkedIn**: [Tu Perfil](https://linkedin.com/in/tu-perfil)
-- **GitHub**: [@tu-usuario](https://github.com/tu-usuario)
-
----
-
-⭐ Si este proyecto te ayudó, ¡dale una estrella!
-```
-
-## 🎯 Consejos para un README efectivo:
-
-1. **Sé conciso pero completo**
-2. **Usa emojis para hacerlo visual**
-3. **Incluye capturas de pantalla**
-4. **Mantén la información actualizada**
-5. **Usa ejemplos de código**
-6. \*_Incluye badges de estado_

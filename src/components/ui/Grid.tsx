@@ -25,7 +25,11 @@ const content = [
   },
 ];
 
-export const Grid = ({ items }: { items: any[] }) => {
+interface GridProps {
+  items: string[] | number[];
+}
+
+export const Grid = ({ items }: GridProps) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
       {content.map((item) => (

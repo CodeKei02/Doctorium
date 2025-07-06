@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { Button } from "../ui/Button";
 import { useConsultorios } from "@/hooks/useConsultorios";
-import { v4 as uuidv4 } from "uuid";
 import { Input } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { Form, Formik } from "formik";
@@ -53,8 +52,8 @@ const ConsultorioForm = ({
   initialState,
   children,
 }: {
-  initialState: Object;
-  children?: ContentItem[] | null;
+  initialState: object;
+  children?: unknown[] | null;
 }) => {
   const baseContentItems: ContentItem[] = [
     {
@@ -153,7 +152,7 @@ const ConsultorioForm = ({
     },
     {
       title: "Crear Consultorio",
-      onClick: () => add([initialState]),
+      onClick: () => add(initialState),
       others:
         "px-4 py-2 text-gray-600 border border-gray-300 bg-[var(--primary-color)] text-white rounded-md hover:text-black",
     },

@@ -1,5 +1,4 @@
 import { Avatar } from "./Avatar";
-import { Card } from "./Card";
 import { Indicator } from "./Indicator";
 
 interface ListItem {
@@ -16,7 +15,6 @@ interface ListCardProps {
   showHours?: boolean;
   showIndicator?: boolean;
   indicatorColor?: string;
-  className?: string;
   otherClassName?: string;
   size?: string;
   bgColor?: string;
@@ -28,7 +26,6 @@ export const ListCard: React.FC<ListCardProps> = ({
   showHours = true,
   showIndicator = true,
   indicatorColor = "bg-[var(--primary-color)]",
-  className = "",
   avatar = false,
   otherClassName = "",
   size,

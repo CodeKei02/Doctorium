@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/Button";
-import { CustomSelect } from "@/components/ui/CustomSelect";
 import { useRouter } from "next/router";
 
 const days = [

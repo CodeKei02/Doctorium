@@ -1,10 +1,8 @@
-import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
 import { Check } from "../ui/Check";
 import { Grid } from "../ui/Grid";
 import { Indicator } from "../ui/Indicator";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 interface Company {
