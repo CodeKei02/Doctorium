@@ -1,9 +1,10 @@
-import { Card } from "../ui/Card";
-import { Check } from "../ui/Check";
-import { Grid } from "../ui/Grid";
-import { Indicator } from "../ui/Indicator";
-import { useState } from "react";
+import { Card } from "@/components/ui/Card";
+import { Check } from "@/components/ui/Check";
+import { Grid } from "@/components/ui/Grid";
+import { Indicator } from "@/components/ui/Indicator";
 import Link from "next/link";
+import { useChecked } from "@/hooks/useChecked";
+import { MuiIcon } from "@/components/ui/MuiIcon";
 
 interface Company {
   id: number;
@@ -52,20 +53,10 @@ const companies = [
 ];
 
 export const CompanyList = () => {
-  const [checkStates, setCheckStates] = useState<{ [key: string]: boolean }>(
-    {}
-  );
-  const handleCheckChange = (id: string) => {
-    setCheckStates((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
-
+  const { checked, handleChange } = useChecked();
   const buttonContent = (company: Company) => [
     {
       label: "Editar Consultorio",
-      icon: "/images/sprite.svg#edit-icon",
       href: {
         pathname: "/consultorios/[id]/editar",
         query: { id: company.id },
@@ -73,13 +64,16 @@ export const CompanyList = () => {
     },
     {
       label: "Editar Disponibilidad",
-      icon: "/images/sprite.svg#edit-disponibilidad-icon",
       href: {
         pathname: "/consultorios/[id]/disponibilidad",
         query: { id: company.id },
       },
     },
   ];
+
+  const isChecking = (id: string) => {
+    return checked[id] || false;
+  };
 
   return (
     <div className="space-y-4">
@@ -88,18 +82,14 @@ export const CompanyList = () => {
           <div className="flex flex-col xs:flex-row xs:items-start xs:justify-between gap-4">
             <div className="flex items-start space-x-2 min-w-0 flex-1">
               <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg className="w-10 h-10 text-black p-1">
-                  <use href="/images/sprite.svg#consultorios-icon" />
-                </svg>
+                <MuiIcon name="Business" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-semibold text-gray-900 mb-1 truncate">
                   {company.name}
                 </h3>
                 <div className="flex items-center text-sm text-gray-600 mb-2">
-                  <svg className="w-4 h-4 mr-1 flex-shrink-0">
-                    <use href="/images/sprite.svg#location-icon" />
-                  </svg>
+                  <MuiIcon name="LocationOn" />
                   <span className="text-sm truncate">
                     {company.adress},{company.city}
                   </span>
@@ -108,24 +98,26 @@ export const CompanyList = () => {
                   <div className="flex items-center space-x-2">
                     <Indicator
                       indicatorColor={
-                        checkStates[company.id] ? "bg-green-500" : "bg-red-500"
+                        isChecking(company.id.toString())
+                          ? "bg-green-500"
+                          : "bg-red-500"
                       }
                     />
                     <p
                       className={`text-sm ${
-                        checkStates[company.id]
+                        isChecking(company.id.toString())
                           ? "text-green-500"
                           : "text-red-500"
                       }`}
                     >
-                      Reserva Online {!checkStates[company.id] && "No"}{" "}
+                      Reserva Online {isChecking(company.id.toString()) && "No"}{" "}
                       disponible
                     </p>
                   </div>
                   <Check
                     id={company.id.toString()}
-                    checked={checkStates[company.id.toString()] || false}
-                    setChecked={handleCheckChange}
+                    checked={isChecking(company.id.toString())}
+                    onChange={(e) => handleChange(company.id.toString(), e)}
                   />
                 </div>
                 <Grid items={company.numbers} />
@@ -136,11 +128,9 @@ export const CompanyList = () => {
                 <Link
                   key={button.label}
                   href={button.href}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 text-black border border-gray-300 hover:bg-[var(--primary-color)] hover:text-white w-full xs:w-auto"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 text-black border border-gray-300 w-full xs:w-auto"
                 >
-                  <svg className="w-5 h-5 text-gray-600 hover:text-white">
-                    <use href={button.icon} />
-                  </svg>
+                  <MuiIcon name="EditDocument" />
                   {button.label}
                 </Link>
               ))}

@@ -1,8 +1,9 @@
-import { Button } from "../ui/Button";
-import { Card } from "../ui/Card";
+import { Btn } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
 
 interface Link {
-  icon: string;
+  icon: MuiIconName;
   label: string;
   href: string;
 }
@@ -28,16 +29,14 @@ export const NavigationCard = ({ links }: { links?: Link[] }) => {
       </h3>
       <div className="flex flex-col gap-2 mt-5 ">
         {links.map((link) => (
-          <Button
+          <Btn
             key={link.label}
-            others="pl-4 py-2 rounded-md hover:bg-[var(--primary-color)] hover:text-white border border-gray-200"
+            others="pl-4 py-2 rounded-md hover:bg-[var(--primary)] hover:text-white border border-gray-200"
             linkTo={link.href}
           >
-            <svg className="w-4 h-4">
-              <use href={link.icon} />
-            </svg>
+            <MuiIcon name={link.icon} />
             {link.label}
-          </Button>
+          </Btn>
         ))}
       </div>
     </Card>

@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --primary-color: hsl(262, 83%, 58%);
+  --primary-color: #4399ca;
+  --secondary-color: #469fd2;
+  --white: #ffffff;
+  --sidebar-background-color: #1e2939;
+  --button-background-color: var(--primary-color);
+  --button-text-color: var(--white);
 }
 
 html {
@@ -9,32 +14,38 @@ html {
   overflow-x: hidden;
 }
 
+button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  cursor: pointer;
+}
+
 @media (min-width: 400px) {
   .xs\:flex-row {
     flex-direction: row !important;
   }
-  
+
   .xs\:items-start {
     align-items: flex-start !important;
   }
-  
+
   .xs\:justify-between {
     justify-content: space-between !important;
   }
-  
+
   .xs\:justify-end {
     justify-content: flex-end !important;
   }
-  
+
   .xs\:space-y-0 {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
-  
+
   .xs\:space-x-2 > * + * {
     margin-left: 0.5rem !important;
   }
-  
+
   .xs\:w-auto {
     width: auto !important;
   }
@@ -44,25 +55,25 @@ html {
   .xs\:flex-row {
     flex-direction: column !important;
   }
-  
+
   .xs\:space-x-2 > * + * {
     margin-left: 0 !important;
     margin-top: 0.5rem !important;
   }
-  
+
   .xs\:w-auto {
     width: 100% !important;
   }
-  
+
   .button-container {
     flex-direction: column !important;
   }
-  
+
   .button-container > * + * {
     margin-left: 0 !important;
     margin-top: 0.5rem !important;
   }
-  
+
   .button-container button {
     width: 100% !important;
   }
@@ -72,25 +83,25 @@ html {
   .xs\:flex-row {
     flex-direction: row !important;
   }
-  
+
   .xs\:space-x-2 > * + * {
     margin-left: 0.5rem !important;
     margin-top: 0 !important;
   }
-  
+
   .xs\:w-auto {
     width: auto !important;
   }
-  
+
   .button-container {
     flex-direction: row !important;
   }
-  
+
   .button-container > * + * {
     margin-left: 0.5rem !important;
     margin-top: 0 !important;
   }
-  
+
   .button-container button {
     width: auto !important;
   }

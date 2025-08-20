@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import { Button } from "../ui/Button";
-import { useConsultorios } from "@/hooks/useConsultorios";
+import { Btn } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { Form, Formik } from "formik";
 import { Card } from "@/components/ui/Card";
 import { Field } from "formik";
-import { Check } from "@/components/ui/Check";
+import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
+import { useMemo } from "react";
 
 interface InputField {
   type: "input";
@@ -16,14 +16,14 @@ interface InputField {
   value?: string;
   inputType: "text" | "textarea" | "select";
   placeholder: string;
-  icon?: string;
+  icon: MuiIconName;
   options?: { value: string; label: string }[];
 }
 
 interface InputGroup {
   type: "input-group";
   title: string;
-  icon: string;
+  icon: MuiIconName;
   value?: string;
   subInputs: {
     name: string;
@@ -37,7 +37,7 @@ interface InputGroup {
 interface InfoCard {
   type: "info-card";
   title: string;
-  icon: string;
+  icon: MuiIconName;
   paragraph: string;
   button?: {
     text: string;
@@ -46,16 +46,14 @@ interface InfoCard {
   };
 }
 
-type ContentItem = InputField | InputGroup | InfoCard;
-
-const ConsultorioForm = ({
+export const ConsultorioForm = ({
   initialState,
   children,
 }: {
   initialState: object;
   children?: [] | null;
 }) => {
-  const baseContentItems: ContentItem[] = [
+  const baseContentItems: (InputField | InputGroup | InfoCard)[] = [
     {
       type: "input",
       name: "nombreConsultorio",
@@ -63,13 +61,13 @@ const ConsultorioForm = ({
       label: "Nombre del consultorio *",
       inputType: "text",
       placeholder: "Ingresa el nombre de tu consultorio",
-      icon: "/images/sprite.svg#consultorios-icon",
+      icon: "Business",
     },
 
     {
       type: "input-group",
       title: "Ubicacion del consultorio",
-      icon: "/images/sprite.svg#location-icon",
+      icon: "LocationOn",
       subInputs: [
         {
           name: "ciudadConsultorio",
@@ -95,7 +93,7 @@ const ConsultorioForm = ({
     {
       type: "input-group",
       title: "Datos de contacto del consultorio",
-      icon: "/images/sprite.svg#phone-icon",
+      icon: "LocalPhone",
       subInputs: [
         {
           name: "codigoPais",
@@ -112,7 +110,7 @@ const ConsultorioForm = ({
     {
       type: "input-group",
       title: "Duracion de la consulta",
-      icon: "/images/sprite.svg#clock-icon",
+      icon: "QueryBuilder",
       value: "",
       subInputs: [
         {
@@ -132,53 +130,51 @@ const ConsultorioForm = ({
     {
       type: "info-card",
       title: "Notificaciones",
-      icon: "/images/sprite.svg#bell-icon",
+      icon: "Notifications",
       paragraph: "Recibir notificación por WhatsApp cuando se agende una cita",
     },
   ];
 
-  const contentItems: ContentItem[] = children
-    ? [...baseContentItems, ...children]
-    : baseContentItems;
-
   const router = useRouter();
-  const { add } = useConsultorios();
+
   const text = [
     {
       title: "Volver",
       onClick: () => router.back(),
       others:
-        "px-4 py-2 text-gray-600 border border-gray-300 text-black rounded-md hover:text-white hover:bg-[var(--primary-color)]",
+        "px-4 py-2 text-gray-600 border border-gray-300 text-black rounded-md hover:text-white hover:bg-[var(--primary)]",
     },
     {
       title: "Crear Consultorio",
-      onClick: () => add([]),
+
       others:
-        "px-4 py-2 text-gray-600 border border-gray-300 bg-[var(--primary-color)] text-white rounded-md hover:text-black",
+        "px-4 py-2 text-gray-600 border border-gray-300 bg-[var(--primary)] text-white rounded-md hover:text-black",
     },
   ];
+
+  const contentItems = useMemo(() => {
+    return children ? [...baseContentItems, ...children] : baseContentItems;
+  }, [children]);
 
   return (
     <div className="flex flex-col gap-4 px-4">
       <div className="flex items-center gap-4">
         {text.map((text) => (
-          <Button key={text.title} onClick={text.onClick} others={text.others}>
+          <Btn key={text.title} onClick={text.onClick} others={text.others}>
             {text.title}
-          </Button>
+          </Btn>
         ))}
       </div>
       <div className="flex flex-col gap-4">
         <Formik initialValues={initialState} onSubmit={() => {}}>
           <Form>
-            {contentItems.map((item: ContentItem) => (
+            {contentItems.map((item: InputField | InputGroup | InfoCard) => (
               <Card
                 key={item.title}
                 style="mb-4 pl-5 border border-gray-200 rounded-lg p-2 gap-2 "
               >
                 <div className="flex items-center gap-2 my-2 py-1">
-                  <svg className="w-4 h-4 text-gray-700">
-                    <use href={item.icon} />
-                  </svg>
+                  <MuiIcon name={item.icon} />
                   <h3 className="text-lg font-semibold">{item.title}</h3>
                 </div>
 
@@ -250,11 +246,6 @@ const ConsultorioForm = ({
                 ) : item.type === "info-card" ? (
                   <div className="flex px-5 justify-between items-center gap-2">
                     <p className="text-gray-700">{item.paragraph}</p>
-                    <Check
-                      id="notificaciones"
-                      checked={true}
-                      setChecked={() => {}}
-                    />
                   </div>
                 ) : null}
               </Card>

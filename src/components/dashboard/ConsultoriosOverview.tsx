@@ -1,30 +1,36 @@
-import { StatCard } from "../ui/StatCard";
-import { MedicalSpacesCard } from "../layout/MedicalSpacesCard";
+import { StatCard } from "@/components/ui/StatCard";
+import { MedicalSpacesCard } from "@/components/layout/MedicalSpacesCard";
+import { MuiIconName } from "../ui/MuiIcon";
 
-const info = [
+const info: Array<{
+  title: string;
+  number: string;
+  text: string;
+  icon: MuiIconName;
+}> = [
   {
     title: "Total Reservas",
     number: "105",
     text: "Todas las reservas registradas",
-    svg: "/images/sprite.svg#calendario-icon",
+    icon: "CalendarMonth",
   },
   {
     title: "Este Mes",
     number: "35",
     text: "Reservas en diciembre",
-    svg: "/images/sprite.svg#trending-up-icon",
+    icon: "TrendingUp",
   },
   {
     title: "Consultorios activos",
     number: "3",
     text: "De 4 consultorios",
-    svg: "/images/sprite.svg#consultorios-icon",
+    icon: "Business",
   },
   {
     title: "Promedio Pacientes",
     number: "5.6",
     text: "Pacientes por día",
-    svg: "/images/sprite.svg#pacientes-icon",
+    icon: "PeopleAlt",
   },
 ];
 export const ConsultoriosOverview = () => {
@@ -36,8 +42,7 @@ export const ConsultoriosOverview = () => {
             key={card.title}
             title={card.title}
             number={Number(card.number)}
-            icon={card.svg}
-            color="text-gray-600"
+            icon={card.icon}
           >
             <p className="text-xs text-gray-600">{card.text}</p>
           </StatCard>

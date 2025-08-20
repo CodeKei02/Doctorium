@@ -3,6 +3,7 @@ import { NavigationCard } from "@/components/dashboard/NavigationCard";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { MuiIconName } from "@/components/ui/MuiIcon";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -45,19 +46,23 @@ const tabs = [
   { label: "Citas" },
 ];
 
-const links = [
+const links: Array<{
+  icon: MuiIconName;
+  label: string;
+  href: string;
+}> = [
   {
-    icon: "/images/sprite.svg#edit-icon",
+    icon: "EditDocument",
     label: "Editar Informacion",
     href: "",
   },
   {
-    icon: "/images/sprite.svg#pacientes-icon",
+    icon: "PeopleAlt",
     label: "Agendar Cita",
     href: "",
   },
   {
-    icon: "/images/sprite.svg#clock-icon",
+    icon: "AccessAlarm",
     label: "Ver Historial",
     href: "",
   },

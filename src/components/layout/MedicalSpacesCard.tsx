@@ -1,5 +1,5 @@
-import { Headline } from "../ui/Headline";
-import { CompanyList } from "../dashboard/CompanyList";
+import { Headline } from "@/components/ui/Headline";
+import { CompanyList } from "@/components/dashboard/CompanyList";
 export const MedicalSpacesCard = () => {
   return (
     <>

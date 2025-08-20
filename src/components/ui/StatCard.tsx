@@ -1,9 +1,10 @@
 import { Card } from "../ui/Card";
+import { MuiIcon, MuiIconName } from "./MuiIcon";
+
 interface StatCardProps {
   title: string;
   number: number;
-  icon?: string;
-  color?: string;
+  icon: MuiIconName;
   trend?: {
     percentage: number;
     label: string;
@@ -16,7 +17,6 @@ export const StatCard = ({
   number,
   icon,
   trend,
-  color,
   children,
 }: StatCardProps) => {
   return (
@@ -26,16 +26,12 @@ export const StatCard = ({
           <h3 className="tracking-tight text-sm font-medium text-gray-600">
             {title}
           </h3>
-          <svg className={`w-4 h-4 ${color}`}>
-            <use href={icon} />
-          </svg>
+          <MuiIcon name={icon} />
         </div>
         <span className="text-2xl font-bold">{number}</span>
         {trend ? (
           <div className="flex items-center gap-1 text-emerald-600">
-            <svg className="h-3 w-3 mr-1 text-emerald-600">
-              <use href="/images/sprite.svg#trending-up-icon" />
-            </svg>
+            <MuiIcon name="TrendingUp" />
             <span>
               {trend.percentage > 0 ? "+" : ""}
               {trend.percentage}% {trend.label}

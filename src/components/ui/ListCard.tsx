@@ -1,4 +1,4 @@
-import { Avatar } from "./Avatar";
+import { AvatarUser } from "./AvatarUser";
 import { Indicator } from "./Indicator";
 
 interface ListItem {
@@ -28,7 +28,6 @@ export const ListCard: React.FC<ListCardProps> = ({
   indicatorColor = "bg-[var(--primary-color)]",
   avatar = false,
   otherClassName = "",
-  size,
   bgColor,
 }) => {
   return (
@@ -38,7 +37,7 @@ export const ListCard: React.FC<ListCardProps> = ({
           key={item.id || item.name || index}
           className={`flex items-center space-x-3 p-3 ${bgColor} rounded-lg`}
         >
-          {avatar && <Avatar name={item.name} size={size} />}
+          {avatar && <AvatarUser name={item.name} />}
 
           {showIndicator && <Indicator indicatorColor={indicatorColor} />}
           <div className="flex-1">

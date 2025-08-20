@@ -26,7 +26,7 @@ export default function Breadcrumb({
             initial={false}
             animate={{
               backgroundColor:
-                item === selectedTab ? "hsl(262, 83%, 58%)" : "#eee0",
+                item === selectedTab ? "var(--primary-color)" : "transparent",
               color: item === selectedTab ? "white" : "gray",
             }}
             className="w-full list-none p-1 m-1 rounded-lg cursor-pointer flex justify-center items-center"

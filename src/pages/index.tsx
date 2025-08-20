@@ -3,52 +3,58 @@ import { StatCard } from "@/components/ui/StatCard";
 import { NavigationCard } from "@/components/dashboard/NavigationCard";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
 import { RecentPatients } from "@/components/dashboard/RecentPatients";
+import { MuiIconName } from "@/components/ui/MuiIcon";
 
-const cardsInfo = [
+const cardsInfo: Array<{
+  title: string;
+  icon: MuiIconName;
+  number: number;
+  color: string;
+}> = [
   {
     title: "Consultorios",
-    icon: "/images/sprite.svg#consultorios-icon",
+    icon: "Business",
     number: 4,
     color: "text-blue-500",
   },
   {
     title: "Pacientes",
-    icon: "/images/sprite.svg#pacientes-icon",
+    icon: "PeopleAlt",
     number: 127,
     color: "text-green-500",
   },
   {
     title: "Cita esta semana",
-    icon: "/images/sprite.svg#calendario-icon",
+    icon: "CalendarMonth",
     number: 23,
     color: "text-violet-500",
   },
   {
     title: "Consultas hoy",
-    icon: "/images/sprite.svg#clock-icon",
+    icon: "AccessAlarm",
     number: 8,
     color: "text-red-500",
   },
 ];
 
-const links = [
+const links: Array<{ icon: MuiIconName; label: string; href: string }> = [
   {
-    icon: "/images/sprite.svg#consultorios-icon",
+    icon: cardsInfo[0].icon,
     label: "Gestionar Consultorios",
     href: "/consultorios#consultorios",
   },
   {
-    icon: "/images/sprite.svg#pacientes-icon",
+    icon: cardsInfo[1].icon,
     label: "Gestionar Pacientes",
     href: "/pacientes",
   },
   {
-    icon: "/images/sprite.svg#calendario-icon",
+    icon: cardsInfo[2].icon,
     label: "Gestionar Citas",
     href: "/citas",
   },
   {
-    icon: "/images/sprite.svg#plantillas-icon",
+    icon: "ContentPaste",
     label: "Gestionar Plantillas",
     href: "/plantillas",
   },
@@ -72,7 +78,6 @@ const index = () => {
               percentage: 12,
               label: "vs mes anterior",
             }}
-            color={card.color}
           />
         ))}
       </div>

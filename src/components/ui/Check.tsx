@@ -1,35 +1,15 @@
-// import * as motion from "motion/react-client"
-import { motion } from "framer-motion";
+import { Switch } from "@mui/material";
 
-export const Check = ({
-  id,
-  checked,
-  setChecked,
-}: {
+interface CheckProps {
   id: string;
   checked: boolean;
-  setChecked: (id: string) => void;
-}) => {
-  return (
-    <button
-      type="button"
-      className={`flex items-center px-0.5 w-10 h-6 rounded-full cursor-pointer justify-start ${
-        !checked ? " bg-gray-200" : "bg-[var(--primary-color)]"
-      }`}
-      style={{
-        justifyContent: "flex-" + (!checked ? "start" : "end"),
-      }}
-      onClick={() => setChecked(id)}
-    >
-      <motion.div
-        className="w-5 h-5 bg-white rounded-full"
-        layout
-        transition={{
-          type: "spring",
-          visualDuration: 0.2,
-          bounce: 0.2,
-        }}
-      />
-    </button>
-  );
-};
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const Check = ({ checked, onChange }: CheckProps) => (
+  <Switch
+    checked={checked}
+    onChange={onChange}
+    slotProps={{ input: { "aria-label": "controlled" } }}
+  />
+);
