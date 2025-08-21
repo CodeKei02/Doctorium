@@ -21,8 +21,8 @@ const days = [
   "Domingo",
 ];
 
-const hours = "00:00";
-console.log(days[0].slice(0, 3));
+// const hours = "00:00";
+const handleChange = () => {};
 export const SchedulesCard = () => {
   return (
     <>
@@ -31,7 +31,11 @@ export const SchedulesCard = () => {
           {/* Headline card */}
           <div className="flex justify-between">
             <div className="flex">
-              {/* <Check id={id} checked={checked} onChange={onChange} /> */}
+              <Check
+                id={index.toString()}
+                checked={false}
+                onChange={() => {}}
+              />
               <p>{day}</p>
               <p>{day.slice(0, 3)}</p>
             </div>

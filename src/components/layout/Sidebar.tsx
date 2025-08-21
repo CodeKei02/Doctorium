@@ -1,7 +1,7 @@
 import { useSidebar } from "@/hooks/useSidebar";
 import Link from "next/link";
 import Image from "next/image";
-import { RefObject, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { AvatarUser } from "@/components/ui/AvatarUser";
 import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
 

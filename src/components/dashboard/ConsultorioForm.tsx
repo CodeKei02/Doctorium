@@ -154,7 +154,7 @@ export const ConsultorioForm = ({
 
   const contentItems = useMemo(() => {
     return children ? [...baseContentItems, ...children] : baseContentItems;
-  }, [children]);
+  }, [baseContentItems, children]);
 
   return (
     <div className="flex flex-col gap-4 px-4">

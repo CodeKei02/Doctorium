@@ -1,24 +1,7 @@
 import { Card } from "@/components/ui/Card";
 import { ListCard } from "@/components/ui/ListCard";
 import { useMemo } from "react";
-
-const activity = [
-  {
-    title: "Cita Agendada",
-    name: "Maria Rodriguez",
-    hours: "Hace 2 horas",
-  },
-  {
-    title: "Consulta completada",
-    name: "Carlos Mendoza",
-    hours: "Hace 3 horas",
-  },
-  {
-    title: "Receta generada",
-    name: "Ana Garcia",
-    hours: "Hace 5 horas",
-  },
-];
+import { activity } from "@/constants/pacients-info";
 
 export const ActivityFeed = () => {
   const recentlyActivity = useMemo(() => {
