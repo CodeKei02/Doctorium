@@ -23,6 +23,7 @@
     "react-redux": "^9.2.0",
     "uuid": "^11.1.0"
   },
+  "packageManager": "pnpm@10.14.0",
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
