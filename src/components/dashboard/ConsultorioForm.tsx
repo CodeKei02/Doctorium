@@ -1,174 +1,31 @@
-import { useRouter } from "next/router";
 import { Btn } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { Form, Formik } from "formik";
 import { Card } from "@/components/ui/Card";
 import { Field } from "formik";
-import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
-import { useMemo } from "react";
-
-interface InputField {
-  type: "input";
-  name: string;
-  title: string;
-  label: string;
-  value?: string;
-  inputType: "text" | "textarea" | "select";
-  placeholder: string;
-  icon: MuiIconName;
-  options?: { value: string; label: string }[];
-}
-
-interface InputGroup {
-  type: "input-group";
-  title: string;
-  icon: MuiIconName;
-  value?: string;
-  subInputs: {
-    name: string;
-    label?: string;
-    type: "text" | "textarea" | "select";
-    placeholder?: string;
-    options?: { value: string; label: string }[];
-  }[];
-}
-
-interface InfoCard {
-  type: "info-card";
-  title: string;
-  icon: MuiIconName;
-  paragraph: string;
-  button?: {
-    text: string;
-    onClick: () => void;
-    variant?: "primary" | "secondary";
-  };
-}
+import { MuiIcon } from "@/components/ui/MuiIcon";
+import { baseContentItems } from "@/constants/consultorio-items";
+import { useRouter } from "next/router";
 
 export const ConsultorioForm = ({
   initialState,
-  children,
 }: {
   initialState: object;
   children?: [] | null;
 }) => {
-  const baseContentItems: (InputField | InputGroup | InfoCard)[] = [
-    {
-      type: "input",
-      name: "nombreConsultorio",
-      title: "Nombre del Consultorio",
-      label: "Nombre del consultorio *",
-      inputType: "text",
-      placeholder: "Ingresa el nombre de tu consultorio",
-      icon: "Business",
-    },
-
-    {
-      type: "input-group",
-      title: "Ubicacion del consultorio",
-      icon: "LocationOn",
-      subInputs: [
-        {
-          name: "ciudadConsultorio",
-          label: "Ciudad donde se ubica el consultorio *",
-          type: "text",
-          placeholder: "Ingresa la ciudad",
-        },
-        {
-          name: "direccionConsultorio",
-          label: "Direccion del consultorio *",
-          type: "text",
-          placeholder: "Ingresa la direccion",
-        },
-        {
-          name: "indicacionesConsultorio",
-          label: "Indicaciones para llegar",
-          type: "textarea",
-          placeholder: "Ingresa las indicaciones",
-        },
-      ],
-    },
-
-    {
-      type: "input-group",
-      title: "Datos de contacto del consultorio",
-      icon: "LocalPhone",
-      subInputs: [
-        {
-          name: "codigoPais",
-          label: "",
-          type: "select",
-          options: [
-            { value: "VE +58", label: "VE +58" },
-            { value: "US +1", label: "US +1" },
-          ],
-        },
-      ],
-    },
-
-    {
-      type: "input-group",
-      title: "Duracion de la consulta",
-      icon: "QueryBuilder",
-      value: "",
-      subInputs: [
-        {
-          name: "duracionConsulta",
-          label: "",
-          type: "select",
-          options: [
-            { value: "30", label: "30" },
-            { value: "45", label: "45" },
-            { value: "60", label: "60" },
-            { value: "90", label: "90" },
-          ],
-        },
-      ],
-    },
-
-    {
-      type: "info-card",
-      title: "Notificaciones",
-      icon: "Notifications",
-      paragraph: "Recibir notificación por WhatsApp cuando se agende una cita",
-    },
-  ];
-
   const router = useRouter();
-
-  const text = [
-    {
-      title: "Volver",
-      onClick: () => router.back(),
-      others:
-        "px-4 py-2 text-gray-600 border border-gray-300 text-black rounded-md hover:text-white hover:bg-[var(--primary)]",
-    },
-    {
-      title: "Crear Consultorio",
-
-      others:
-        "px-4 py-2 text-gray-600 border border-gray-300 bg-[var(--primary)] text-white rounded-md hover:text-black",
-    },
-  ];
-
-  const contentItems = useMemo(() => {
-    return children ? [...baseContentItems, ...children] : baseContentItems;
-  }, [baseContentItems, children]);
 
   return (
     <div className="flex flex-col gap-4 px-4">
       <div className="flex items-center gap-4">
-        {text.map((text) => (
-          <Btn key={text.title} onClick={text.onClick} others={text.others}>
-            {text.title}
-          </Btn>
-        ))}
+        <Btn onClick={() => router.back()}>Volver</Btn>
+        <Btn onClick={() => {}}>Crear Consultorio</Btn>
       </div>
       <div className="flex flex-col gap-4">
         <Formik initialValues={initialState} onSubmit={() => {}}>
           <Form>
-            {contentItems.map((item: InputField | InputGroup | InfoCard) => (
+            {baseContentItems.map((item) => (
               <Card
                 key={item.title}
                 style="mb-4 pl-5 border border-gray-200 rounded-lg p-2 gap-2 "
