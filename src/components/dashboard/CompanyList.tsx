@@ -49,8 +49,9 @@ export const CompanyList = () => {
                           : "text-red-500"
                       }`}
                     >
-                      Reserva Online {isChecking(company.id.toString()) && "No"}{" "}
-                      disponible
+                      {`Reserva online ${
+                        !isChecking(company.id.toString()) ? "no" : ""
+                      } disponible`}
                     </p>
                   </div>
                   <Check
