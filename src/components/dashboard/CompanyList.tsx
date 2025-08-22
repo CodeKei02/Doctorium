@@ -2,29 +2,13 @@ import { Card } from "@/components/ui/Card";
 import { Check } from "@/components/ui/Check";
 import { Grid } from "@/components/ui/Grid";
 import { Indicator } from "@/components/ui/Indicator";
-import Link from "next/link";
 import { useChecked } from "@/hooks/useChecked";
 import { MuiIcon } from "@/components/ui/MuiIcon";
 import { companies } from "@/constants/companies-list";
+import { Btn } from "../ui/Button";
 
 export const CompanyList = () => {
   const { checked, handleChange } = useChecked();
-  const buttonContent = (company: (typeof companies)[number]) => [
-    {
-      label: "Editar Consultorio",
-      href: {
-        pathname: "/consultorios/[id]/editar",
-        query: { id: company.id },
-      },
-    },
-    {
-      label: "Editar Disponibilidad",
-      href: {
-        pathname: "/consultorios/[id]/disponibilidad",
-        query: { id: company.id },
-      },
-    },
-  ];
 
   const isChecking = (id: string) => {
     return checked[id] || false;
@@ -79,16 +63,24 @@ export const CompanyList = () => {
               </div>
             </div>
             <div className="flex flex-col xs:flex-row items-center justify-start xs:justify-end gap-2 flex-shrink-0 w-full xs:w-auto button-container">
-              {buttonContent(company).map((button) => (
-                <Link
-                  key={button.label}
-                  href={button.href}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 text-black border border-gray-300 w-full xs:w-auto"
-                >
-                  <MuiIcon name="EditDocument" />
-                  {button.label}
-                </Link>
-              ))}
+              <Btn
+                linkTo={{
+                  pathname: "/consultorios/[id]/editar",
+                  query: { id: company.id.toString() },
+                }}
+              >
+                <MuiIcon name="EditDocument" />
+                Editar Consultorio
+              </Btn>
+              <Btn
+                linkTo={{
+                  pathname: "/consultorios/[id]/disponibilidad",
+                  query: { id: company.id.toString() },
+                }}
+              >
+                <MuiIcon name="EditDocument" />
+                Editar Disponibilidad
+              </Btn>
             </div>
           </div>
         </Card>
