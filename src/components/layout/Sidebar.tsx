@@ -3,41 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
 import { AvatarUser } from "@/components/ui/AvatarUser";
-import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
-
-export type SidebarLink = {
-  icon: MuiIconName;
-  label: string;
-  href: string;
-};
-
-const links: SidebarLink[] = [
-  {
-    icon: "Home",
-    label: "Inicio",
-    href: "/",
-  },
-  {
-    icon: "CalendarMonth",
-    label: "Calendario",
-    href: "/calendario",
-  },
-  {
-    icon: "Business",
-    label: "Consultorios",
-    href: "/consultorios",
-  },
-  {
-    icon: "PeopleAlt",
-    label: "Pacientes",
-    href: "/pacientes",
-  },
-  {
-    icon: "ContentPaste",
-    label: "Plantillas Episodios",
-    href: "/plantillas",
-  },
-];
+import { MuiIcon } from "@/components/ui/MuiIcon";
+import { links } from "@/constants/links/sidebar-links";
 
 export const Sidebar = () => {
   const { isOpen, toggle, close } = useSidebar();
