@@ -17,7 +17,8 @@ import ContentPasteIcon from "@mui/icons-material/ContentPaste";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import EmailIcon from "@mui/icons-material/Email";
-import { TrendingUp } from "@mui/icons-material";
+import TrendingUp from "@mui/icons-material/TrendingUp";
+import Check from "@mui/icons-material/Check";
 
 // Mapa de íconos disponibles (whitelist)
 const icons = {
@@ -39,6 +40,7 @@ const icons = {
   QueryBuilder: QueryBuilderIcon,
   Email: EmailIcon,
   TrendingUp: TrendingUp,
+  Check: Check,
 };
 
 export type MuiIconName = keyof typeof icons;
