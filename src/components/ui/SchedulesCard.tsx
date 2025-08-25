@@ -1,7 +1,7 @@
+import { useChecked } from "@/hooks/useChecked";
 import { Btn } from "./Button";
 import { Check } from "./Check";
 import { MuiIcon } from "./MuiIcon";
-
 // interface SchedulesCardProps {
 //   id: string;
 //   checked: boolean;
@@ -22,8 +22,10 @@ const days = [
 ];
 
 // const hours = "00:00";
-const handleChange = () => {};
+
 export const SchedulesCard = () => {
+  const { checked, handleChange } = useChecked();
+
   return (
     <>
       {days.map((day, index) => (
@@ -33,8 +35,8 @@ export const SchedulesCard = () => {
             <div className="flex">
               <Check
                 id={index.toString()}
-                checked={false}
-                onChange={() => {}}
+                checked={checked[index.toString()] || false}
+                onChange={(e) => handleChange(index.toString(), e)}
               />
               <p>{day}</p>
               <p>{day.slice(0, 3)}</p>
