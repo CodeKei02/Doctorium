@@ -23,8 +23,11 @@ export const ConsultorioForm = ({
       <div className="flex flex-col gap-4">
         <Formik initialValues={initialState} onSubmit={() => {}}>
           <Form>
-            {baseContentItems.map((item) => (
-              <div className="w-full my-4 flex-shrink border border-gray-200 rounded-lg p-2 2xs:p-3 2md:p-4 hover:shadow-md">
+            {baseContentItems.map((item, index) => (
+              <div
+                key={index}
+                className="w-full my-4 flex-shrink border border-gray-200 rounded-lg p-2 2xs:p-3 2md:p-4 hover:shadow-md"
+              >
                 <div className="flex items-center gap-2 my-2 py-1">
                   <MuiIcon name={item.icon} />
                   <h3 className="text-lg font-semibold">{item.title}</h3>
