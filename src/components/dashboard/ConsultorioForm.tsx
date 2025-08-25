@@ -1,8 +1,6 @@
 import { Btn } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { Form, Formik } from "formik";
-import { Card } from "@/components/ui/Card";
 import { Field } from "formik";
 import { MuiIcon } from "@/components/ui/MuiIcon";
 import { baseContentItems } from "@/constants/consultorio-items";
@@ -26,23 +24,18 @@ export const ConsultorioForm = ({
         <Formik initialValues={initialState} onSubmit={() => {}}>
           <Form>
             {baseContentItems.map((item) => (
-              <Card
-                key={item.title}
-                style="mb-4 pl-5 border border-gray-200 rounded-lg p-2 gap-2 "
-              >
+              <div className="w-full my-4 flex-shrink border border-gray-200 rounded-lg p-2 2xs:p-3 2md:p-4 hover:shadow-md">
                 <div className="flex items-center gap-2 my-2 py-1">
                   <MuiIcon name={item.icon} />
                   <h3 className="text-lg font-semibold">{item.title}</h3>
                 </div>
 
                 {item.type === "input" ? (
-                  <Input
-                    title={item.title}
-                    name={item.name}
-                    label={item.label}
+                  <Field
                     type={item.inputType}
+                    name={item.name}
                     placeholder={item.placeholder}
-                    icon={item.icon}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]"
                   />
                 ) : item.type === "input-group" ? (
                   item.subInputs.map((subItem) => (
@@ -62,6 +55,7 @@ export const ConsultorioForm = ({
                             required={true}
                             className="w-32"
                           />
+
                           {subItem.name === "codigoPais" ? (
                             <Field
                               name={subItem.name}
@@ -105,7 +99,7 @@ export const ConsultorioForm = ({
                     <p className="text-gray-700">{item.paragraph}</p>
                   </div>
                 ) : null}
-              </Card>
+              </div>
             ))}
           </Form>
         </Formik>
