@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Field, FormikProps, FieldMetaProps } from "formik";
+import { Button } from "@mui/material";
+import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
 
 interface SelectOption {
   value: string | number;
@@ -62,26 +64,22 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
           meta: FieldMetaProps<unknown>;
         }) => (
           <div className="relative" ref={dropdownRef}>
-            <button
+            <Button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className={`
-                h-10 w-full border rounded-md px-3 py-2 text-left bg-white 
-                hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]
-                ${
-                  meta.touched && meta.error
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }
-              `}
+              style={{
+                backgroundColor: "var(--primary-color)",
+                color: "white",
+              }}
+              className="w-full"
             >
               {selectedOption && selectedOption.label}
-            </button>
+            </Button>
 
             {isOpen && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
                 {options.map((option) => (
-                  <button
+                  <Button
                     key={option.value}
                     type="button"
                     onClick={() => {
@@ -89,10 +87,23 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                       form.setFieldValue(name, option.value);
                       setIsOpen(false);
                     }}
-                    className="w-full px-3 py-2 text-left hover:bg-[var(--primary-color)] hover:text-white transition-colors duration-200 rounded-md"
+                    style={{
+                      backgroundColor:
+                        selectedOption?.value === option.value
+                          ? "var(--primary-color)"
+                          : "white",
+                      color:
+                        selectedOption?.value === option.value
+                          ? "white"
+                          : "black",
+                    }}
+                    className="w-full text-left"
                   >
+                    {selectedOption?.value === option.value && (
+                      <MuiIcon name="Check" className="white" />
+                    )}
                     {option.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             )}
