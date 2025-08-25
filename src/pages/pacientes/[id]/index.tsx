@@ -1,7 +1,7 @@
 import { CustomerList } from "@/components/dashboard/CustomerList";
 import { NavigationCard } from "@/components/dashboard/NavigationCard";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import { Button } from "@/components/ui/Button";
+import { Btn } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { MuiIconName } from "@/components/ui/MuiIcon";
 import { useRouter } from "next/router";
@@ -134,12 +134,12 @@ const PacienteDetalle = () => {
   return (
     <div className="flex flex-col gap-4 px-4">
       <div className="flex items-center justify-between">
-        <Button
+        <Btn
           linkTo="/pacientes"
           others="border border-gray-300 px-4 py-2 rounded-md"
         >
           <p>← Volver</p>
-        </Button>
+        </Btn>
       </div>
       {paciente && <CustomerList key={paciente.id} customers={[paciente]} />}
       <Breadcrumb tabs={tabs} onTabChange={setActiveTab}>
