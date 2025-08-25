@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Field, FormikProps, FieldMetaProps } from "formik";
 import { Button } from "@mui/material";
-import { MuiIcon, MuiIconName } from "@/components/ui/MuiIcon";
+import { MuiIcon } from "@/components/ui/MuiIcon";
 
 interface SelectOption {
   value: string | number;
@@ -58,7 +58,6 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       <Field name={name}>
         {({
           form,
-          meta,
         }: {
           form: FormikProps<Record<string, unknown>>;
           meta: FieldMetaProps<unknown>;
