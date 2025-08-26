@@ -70,9 +70,10 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                 backgroundColor: "var(--primary-color)",
                 color: "white",
               }}
-              className="w-full"
+              className="w-full flex gap-2"
             >
               {selectedOption && selectedOption.label}
+              <MuiIcon name="KeyboardArrowDown" />
             </Button>
 
             {isOpen && (
