@@ -19,6 +19,7 @@ import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import EmailIcon from "@mui/icons-material/Email";
 import TrendingUp from "@mui/icons-material/TrendingUp";
 import Check from "@mui/icons-material/Check";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 // Mapa de íconos disponibles (whitelist)
 const icons = {
@@ -41,6 +42,7 @@ const icons = {
   Email: EmailIcon,
   TrendingUp: TrendingUp,
   Check: Check,
+  KeyboardArrowDown: KeyboardArrowDownIcon,
 };
 
 export type MuiIconName = keyof typeof icons;
