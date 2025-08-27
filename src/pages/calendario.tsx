@@ -1,7 +1,11 @@
-import { Text } from "@/components/ui/Text";
+import DragAndDrop from "@/components/ui/DragAndDrop";
 
 const CalendarioPage = () => {
-  return <Text page="Calendario" />;
+  return (
+    <div>
+      <DragAndDrop />
+    </div>
+  );
 };
 
 export default CalendarioPage;
