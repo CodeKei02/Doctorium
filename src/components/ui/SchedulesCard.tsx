@@ -2,7 +2,6 @@ import { useChecked } from "@/hooks/useChecked";
 import { Btn } from "./Button";
 import { Check } from "./Check";
 import { MuiIcon } from "./MuiIcon";
-import { CustomSelect } from "./CustomSelect";
 import { Form, Formik } from "formik";
 import { TimeSelect } from "./TimeSelect";
 const days = [
