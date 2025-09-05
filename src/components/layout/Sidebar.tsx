@@ -1,4 +1,4 @@
-import { useSidebar } from "@/hooks/useSidebar";
+import { useSidebarStore } from "@/stores/sidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -7,9 +7,8 @@ import { MuiIcon } from "@/components/ui/MuiIcon";
 import { links } from "@/constants/links/sidebar-links";
 
 export const Sidebar = () => {
-  const { isOpen, toggle, close } = useSidebar();
   const linksData = useMemo(() => links, []);
-
+  const { isOpen, toggle, close } = useSidebarStore();
   return (
     <>
       <header
