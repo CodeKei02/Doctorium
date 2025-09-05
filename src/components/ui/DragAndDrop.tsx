@@ -16,7 +16,7 @@ type Appointment = {
 function generateHalfHourTimes(start = 8, end = 18) {
   const slots: string[] = [];
   for (let h = start; h <= end; h++) {
-    for (let m of [0, 30]) {
+    for (const m of [0, 30]) {
       const time = `${String(h).padStart(2, "0")}:${String(m).padStart(
         2,
         "0"
@@ -74,9 +74,7 @@ function TimeDropSlot({
       onDragLeave: () => setIsOver(false),
       onDrop: ({ source }) => {
         setIsOver(false);
-        const appointmentId = (source.data as any)?.appointmentId as
-          | string
-          | undefined;
+        const appointmentId = source.data?.appointmentId as string | null;
         if (appointmentId) onDropToTime({ appointmentId, time });
       },
     });
