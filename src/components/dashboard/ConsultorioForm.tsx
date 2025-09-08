@@ -31,7 +31,10 @@ export const ConsultorioForm = ({
 
   const handleSubmit = (
     values: typeof initialState,
-    { resetForm, setSubmitting }: any
+    {
+      resetForm,
+      setSubmitting,
+    }: { resetForm: () => void; setSubmitting: (isSubmitting: boolean) => void }
   ) => {
     const data = {
       id: values.id,
