@@ -1,11 +1,11 @@
 import { Card } from "@/components/ui/Card";
 import { Check } from "@/components/ui/Check";
-import { Grid } from "@/components/ui/Grid";
 import { Indicator } from "@/components/ui/Indicator";
 import { useChecked } from "@/hooks/useChecked";
 import { MuiIcon } from "@/components/ui/MuiIcon";
 import { companies } from "@/constants/companies-list";
 import { Btn } from "../ui/Button";
+import { useConsultorioStore } from "@/stores/consultorio";
 
 export const CompanyList = () => {
   const { checked, handleChange } = useChecked();
@@ -13,10 +13,10 @@ export const CompanyList = () => {
   const isChecking = (id: string) => {
     return checked[id] || false;
   };
-
+  const items = useConsultorioStore((s) => s.items);
   return (
     <div className="space-y-4">
-      {companies.map((company) => (
+      {[...companies, ...items].map((company) => (
         <Card key={company.id}>
           <div className="flex flex-col xs:flex-row xs:items-start xs:justify-between gap-4">
             <div className="flex items-start space-x-2 min-w-0 flex-1">
@@ -30,7 +30,7 @@ export const CompanyList = () => {
                 <div className="flex items-center text-sm text-gray-600 mb-2">
                   <MuiIcon name="LocationOn" />
                   <span className="text-sm truncate">
-                    {company.adress},{company.city}
+                    {company.address},{company.city}
                   </span>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -60,7 +60,6 @@ export const CompanyList = () => {
                     onChange={(e) => handleChange(company.id.toString(), e)}
                   />
                 </div>
-                <Grid items={company.numbers} />
               </div>
             </div>
             <div className="flex flex-col xs:flex-row items-center justify-start xs:justify-end gap-2 flex-shrink-0 w-full xs:w-auto button-container">
