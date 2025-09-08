@@ -8,9 +8,11 @@ const EditarConsultorio = () => {
     address: "Calle Simon Bolivar",
     city: "Caracas",
     phone: "04123456789",
-    telefonoConsultorio: "041234567890",
-    direccionConsultorio: "Calle Simon Bolivar",
-    indicacionesConsultorio: "Al lado de edificio",
+    country: "Venezuela",
+    country_code: "VE",
+    street: "Calle Simon Bolivar",
+    duration: "30",
+    indication: "Al lado de edificio",
   };
   return <ConsultorioForm initialState={initialState} />;
 };
