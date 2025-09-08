@@ -6,11 +6,13 @@ const NuevoConsultorio = () => {
     id: uuidv4(),
     name: "",
     address: "",
-    city: "",
+    street: "",
+    indication: "",
+    country_code: "",
     phone: "",
-    telefonoConsultorio: "",
-    direccionConsultorio: "",
-    indicacionesConsultorio: "",
+    city: "",
+    country: "",
+    duration: "",
   };
   return <ConsultorioForm initialState={initialState} />;
 };

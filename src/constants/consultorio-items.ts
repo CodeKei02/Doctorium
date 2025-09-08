@@ -41,7 +41,7 @@ export interface InfoCard {
 export const baseContentItems: (InputField | InputGroup | InfoCard)[] = [
   {
     type: "input",
-    name: "nombreConsultorio",
+    name: "name",
     title: "Nombre del Consultorio",
     label: "Nombre del consultorio *",
     inputType: "text",
@@ -54,19 +54,19 @@ export const baseContentItems: (InputField | InputGroup | InfoCard)[] = [
     icon: "LocationOn",
     subInputs: [
       {
-        name: "ciudadConsultorio",
+        name: "address",
         label: "Ciudad donde se ubica el consultorio *",
         type: "text",
         placeholder: "Ingresa la ciudad",
       },
       {
-        name: "direccionConsultorio",
+        name: "street",
         label: "Direccion del consultorio *",
         type: "text",
         placeholder: "Ingresa la direccion",
       },
       {
-        name: "indicacionesConsultorio",
+        name: "indication",
         label: "Indicaciones para llegar",
         type: "textarea",
         placeholder: "Ingresa las indicaciones",
@@ -79,7 +79,7 @@ export const baseContentItems: (InputField | InputGroup | InfoCard)[] = [
     icon: "LocalPhone",
     subInputs: [
       {
-        name: "codigoPais",
+        name: "country_code",
         label: "",
         type: "select",
         options: [
@@ -96,7 +96,7 @@ export const baseContentItems: (InputField | InputGroup | InfoCard)[] = [
     value: "",
     subInputs: [
       {
-        name: "duracionConsulta",
+        name: "duration",
         label: "",
         type: "select",
         options: [
