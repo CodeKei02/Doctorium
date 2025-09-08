@@ -14,7 +14,7 @@ export interface Consultorio {
   duration: string | number;
 }
 
-export interface ConsultorioId extends String {}
+export type ConsultorioId = string;
 
 interface ConsultorioState {
   items: Consultorio[];
@@ -72,7 +72,7 @@ export const useConsultorioStore = create<ConsultorioStore>()((set, get) => ({
   setConsultorios: (items) => set({ items }),
   clear: () => set({ items: [] }),
 
-  getById: (id) => get().items.find((it) => it.id === id || null) || null,
+  getById: (id) => get().items.find((it) => it.id === id) ?? null,
 }));
 
 export const selectConsultorios = (s: ConsultorioStore) => s.items;
