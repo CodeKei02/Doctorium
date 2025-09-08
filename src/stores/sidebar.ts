@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-type SidebarState = {
+interface SidebarState {
   isOpen: boolean;
-};
+}
 
-type SidebarActions = {
+interface SidebarActions {
   open: () => void;
   close: () => void;
   toggle: () => void;
-};
+}
 
 export const useSidebarStore = create<SidebarState & SidebarActions>()(
   devtools((set) => ({
