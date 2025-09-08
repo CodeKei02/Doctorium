@@ -10,6 +10,8 @@ const NuevoConsultorio = () => {
     indication: "",
     country_code: "",
     phone: "",
+    city: "",
+    country: "",
     duration: "",
   };
   return <ConsultorioForm initialState={initialState} />;
