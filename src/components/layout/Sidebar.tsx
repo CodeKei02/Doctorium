@@ -1,13 +1,13 @@
-import { useSidebar } from "@/hooks/useSidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
 import { AvatarUser } from "@/components/ui/AvatarUser";
 import { MuiIcon } from "@/components/ui/MuiIcon";
 import { links } from "@/constants/links/sidebar-links";
+import { useSidebarStore } from "@/stores/sidebar";
 
 export const Sidebar = () => {
-  const { isOpen, toggle, close } = useSidebar();
+  const { isOpen, toggle, close } = useSidebarStore();
   const linksData = useMemo(() => links, []);
 
   return (
