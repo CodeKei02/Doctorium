@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
+import { CrudState, buildCrudActions } from "./crud";
 
 export interface Consultorio {
   id: string;
@@ -14,68 +15,57 @@ export interface Consultorio {
   duration: string | number;
 }
 
-export type ConsultorioId = string;
-
-interface ConsultorioState {
-  items: Consultorio[];
-}
-
 interface ConsultorioActions {
   addConsultorio: (data: Omit<Consultorio, "id">) => Consultorio;
   updateConsultorio: (
-    id: ConsultorioId,
+    id: string,
     changes: Partial<Omit<Consultorio, "id">>
   ) => boolean;
-  removeConsultorio: (id: ConsultorioId) => boolean;
+  removeConsultorio: (id: string) => boolean;
   setConsultorios: (items: Consultorio[]) => void;
   clear: () => void;
-  getById: (id: ConsultorioId) => Consultorio | null;
+  getById: (id: string) => Consultorio | null;
 }
 
 export interface ConsultorioStore
-  extends ConsultorioState,
+  extends CrudState<Consultorio>,
     ConsultorioActions {}
 
-export const useConsultorioStore = create<ConsultorioStore>()((set, get) => ({
-  items: [],
-
-  addConsultorio: (data) => {
-    const newItem: Consultorio = { id: uuidv4(), ...data };
-    set((state) => ({ items: [...state.items, newItem] }));
-    return newItem;
-  },
-
-  updateConsultorio: (id, changes) => {
-    let updated = false;
+export const useConsultorioStore = create<ConsultorioStore>()((set, get) => {
+  const setCrud = (
+    fn: (
+      state: CrudState<Consultorio>
+    ) => CrudState<Consultorio> | Partial<CrudState<Consultorio>>
+  ) =>
     set((state) => {
-      const next = state.items.map((it) => {
-        if (it.id !== id) return it;
-        updated = true;
-        return { ...it, ...changes };
-      });
-      return { items: next };
+      const slice: CrudState<Consultorio> = { items: state.items };
+      const next = fn(slice);
+      const nextItems = (
+        "items" in next ? next.items : slice.items
+      ) as Consultorio[];
+      return { ...state, items: nextItems };
     });
-    return updated;
-  },
 
-  removeConsultorio: (id) => {
-    let existed = false;
-    set((state) => {
-      const before = state.items.length;
-      const next = state.items.filter((it) => it.id !== id);
-      existed = next.length !== before;
-      return { items: next };
-    });
-    return existed;
-  },
+  const getCrud = (): CrudState<Consultorio> => ({ items: get().items });
 
-  setConsultorios: (items) => set({ items }),
-  clear: () => set({ items: [] }),
+  const { add, update, remove, setAll, clear, getById } = buildCrudActions<
+    "id",
+    string,
+    Consultorio,
+    CrudState<Consultorio>
+  >(setCrud, getCrud, { idKey: "id", generateId: () => uuidv4() });
 
-  getById: (id) => get().items.find((it) => it.id === id) ?? null,
-}));
+  return {
+    items: [],
+    addConsultorio: (data) => add(data),
+    updateConsultorio: (id, changes) => update(id, changes),
+    removeConsultorio: (id) => remove(id),
+    setConsultorios: (items) => setAll(items),
+    clear,
+    getById,
+  };
+});
 
 export const selectConsultorios = (s: ConsultorioStore) => s.items;
-export const selectConsultorioById =
-  (id: ConsultorioId) => (s: ConsultorioStore) =>
-    s.items.find((it) => it.id === id);
+export const selectConsultorioById = (id: string) => (s: ConsultorioStore) =>
+  s.items.find((it) => it.id === id);
