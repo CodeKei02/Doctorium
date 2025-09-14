@@ -1,15 +1,13 @@
 import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
-import { store } from "@/contexts/store";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { useSidebar } from "@/hooks/useSidebar";
 import "@/styles/globals.css";
+import { useSidebarStore } from "@/stores/sidebar";
 
 const AppContent = ({
   Component,
   pageProps,
 }: Pick<AppProps, "Component" | "pageProps">) => {
-  const { isOpen } = useSidebar();
+  const { isOpen } = useSidebarStore();
   return (
     <div className={`min-h-screen mb-5 bg-gray-50 ${isOpen ? "md:ml-64" : ""}`}>
       <Sidebar />
@@ -23,11 +21,7 @@ const AppContent = ({
 };
 
 export const App = ({ Component, pageProps }: AppProps) => {
-  return (
-    <Provider store={store}>
-      <AppContent Component={Component} pageProps={pageProps} />
-    </Provider>
-  );
+  return <AppContent Component={Component} pageProps={pageProps} />;
 };
 
 export default App;
