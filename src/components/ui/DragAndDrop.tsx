@@ -9,14 +9,13 @@ import { Btn } from "./Button";
 type Appointment = {
   id: string;
   patient: string;
-  time: string; // formato HH:mm
+  time: string;
 };
 
-// Genera intervalos de 30 minutos en formato HH:mm
 function generateHalfHourTimes(start = 8, end = 18) {
   const slots: string[] = [];
   for (let h = start; h <= end; h++) {
-    for (let m of [0, 30]) {
+    for (const m of [0, 30]) {
       const time = `${String(h).padStart(2, "0")}:${String(m).padStart(
         2,
         "0"
@@ -27,7 +26,6 @@ function generateHalfHourTimes(start = 8, end = 18) {
   return slots;
 }
 
-// Tarjeta draggable de cita
 function AppointmentCard({ appt }: { appt: Appointment }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -51,7 +49,6 @@ function AppointmentCard({ appt }: { appt: Appointment }) {
   );
 }
 
-// Zona de drop por horario
 function TimeDropSlot({
   time,
   children,
@@ -74,9 +71,8 @@ function TimeDropSlot({
       onDragLeave: () => setIsOver(false),
       onDrop: ({ source }) => {
         setIsOver(false);
-        const appointmentId = (source.data as any)?.appointmentId as
-          | string
-          | undefined;
+        const appointmentId = (source.data as { appointmentId: string })
+          ?.appointmentId as string | undefined;
         if (appointmentId) onDropToTime({ appointmentId, time });
       },
     });
@@ -95,7 +91,6 @@ function TimeDropSlot({
 }
 
 export default function DragAndDrop() {
-  // Ejemplo de citas iniciales
   const [appointments, setAppointments] = useState<Appointment[]>([
     { id: "a1", patient: "María E. Rodriguez", time: "09:00" },
     { id: "a2", patient: "Carlos Pérez", time: "10:30" },
