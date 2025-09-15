@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { useSidebarStore } from "@/stores/sidebar";
-=======
->>>>>>> create-global-crud
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -11,10 +7,6 @@ import { links } from "@/constants/links/sidebar-links";
 import { useSidebarStore } from "@/stores/sidebar";
 
 export const Sidebar = () => {
-<<<<<<< HEAD
-=======
-  const { isOpen, toggle, close } = useSidebarStore();
->>>>>>> create-global-crud
   const linksData = useMemo(() => links, []);
   const { isOpen, toggle, close } = useSidebarStore();
   return (
