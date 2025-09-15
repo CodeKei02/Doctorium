@@ -1,4 +1,4 @@
-import DragAndDrop from "@/components/ui/DragAndDrop";
+import DragAndDrop from "@/components/layout/DragAndDrop";
 
 const CalendarioPage = () => {
   return (
