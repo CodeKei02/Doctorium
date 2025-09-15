@@ -9,6 +9,7 @@ import { useConsultorioStore } from "@/stores/consultorio";
 
 export const ConsultorioForm = ({
   initialState,
+  editMode = false,
 }: {
   initialState: {
     id: string;
@@ -23,10 +24,14 @@ export const ConsultorioForm = ({
     duration: string;
   };
   children?: [] | null;
+  editMode?: boolean;
 }) => {
   const router = useRouter();
   const createConsultorio = useConsultorioStore(
     (state) => state.addConsultorio
+  );
+  const editConsultorio = useConsultorioStore(
+    (state) => state.updateConsultorio
   );
 
   const handleSubmit = (
@@ -48,9 +53,11 @@ export const ConsultorioForm = ({
       city: values.city,
       country: values.country,
     };
-    console.log(data);
+
     setTimeout(() => {
-      createConsultorio(data);
+      {
+        editMode ? editConsultorio(values.id, data) : createConsultorio(data);
+      }
       resetForm();
       setSubmitting(false);
       router.back();
@@ -66,7 +73,7 @@ export const ConsultorioForm = ({
               <div className="flex items-center gap-4">
                 <Btn onClick={() => router.back()}>Volver</Btn>
                 <Btn type="submit" disabled={isSubmitting}>
-                  Crear Consultorio
+                  {editMode ? "Editar Consultorio" : "Crear Consultorio"}
                 </Btn>
               </div>
               {baseContentItems.map((item, index) => (

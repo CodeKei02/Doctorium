@@ -1,4 +1,5 @@
 import { create } from "zustand";
+<<<<<<< HEAD
 import { devtools } from "zustand/middleware";
 
 interface SidebarState {
@@ -19,3 +20,19 @@ export const useSidebarStore = create<SidebarState & SidebarActions>()(
     toggle: () => set((s) => ({ isOpen: !s.isOpen })),
   }))
 );
+=======
+
+interface SidebarState {
+  isOpen: boolean;
+  toggle: () => void;
+  open: () => void;
+  close: () => void;
+}
+
+export const useSidebarStore = create<SidebarState>((set) => ({
+  isOpen: false,
+  toggle: () => set((state) => ({ isOpen: !state.isOpen })),
+  open: () => set({ isOpen: true }),
+  close: () => set({ isOpen: false }),
+}));
+>>>>>>> create-global-crud
