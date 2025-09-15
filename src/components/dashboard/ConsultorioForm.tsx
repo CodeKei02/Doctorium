@@ -53,11 +53,10 @@ export const ConsultorioForm = ({
       city: values.city,
       country: values.country,
     };
-
+    const mode = () =>
+      editMode ? editConsultorio(values.id, data) : createConsultorio(data);
     setTimeout(() => {
-      {
-        editMode ? editConsultorio(values.id, data) : createConsultorio(data);
-      }
+      mode();
       resetForm();
       setSubmitting(false);
       router.back();
