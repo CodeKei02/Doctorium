@@ -48,7 +48,6 @@ function AppointmentCard({ appt }: { appt: Appointment }) {
   );
 }
 
-// Zona de drop por horario
 function TimeDropSlot({
   time,
   children,
@@ -71,7 +70,8 @@ function TimeDropSlot({
       onDragLeave: () => setIsOver(false),
       onDrop: ({ source }) => {
         setIsOver(false);
-        const appointmentId = source.data?.appointmentId as string | null;
+        const appointmentId = (source.data as { appointmentId: string })
+          ?.appointmentId as string | undefined;
         if (appointmentId) onDropToTime({ appointmentId, time });
       },
     });

@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { useSidebarStore } from "@/stores/sidebar";
 import "@/styles/globals.css";
+import { useSidebarStore } from "@/stores/sidebar";
 
 const AppContent = ({
   Component,
