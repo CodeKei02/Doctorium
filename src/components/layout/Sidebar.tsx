@@ -7,9 +7,8 @@ import { links } from "@/constants/links/sidebar-links";
 import { useSidebarStore } from "@/stores/sidebar";
 
 export const Sidebar = () => {
-  const { isOpen, toggle, close } = useSidebarStore();
   const linksData = useMemo(() => links, []);
-
+  const { isOpen, toggle, close } = useSidebarStore();
   return (
     <>
       <header

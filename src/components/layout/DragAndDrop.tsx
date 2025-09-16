@@ -4,7 +4,6 @@ import {
   draggable,
   dropTargetForElements,
 } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { Btn } from "./Button";
 
 type Appointment = {
   id: string;
@@ -113,14 +112,6 @@ export default function DragAndDrop() {
 
   return (
     <div className="w-full rounded-lg border border-gray-200 bg-white p-4">
-      <div className="flex justify-between w-full">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">
-          Reprogramar citas
-        </h2>
-        {/* Implement a modal for adding new appointments */}
-        <Btn onClick={() => {}}>Agregar cita</Btn>
-      </div>
-
       <div className="grid grid-cols-[80px_1fr] items-start gap-3">
         {timeSlots.map((t) => {
           const apptsAtTime = appointments.filter((a) => a.time === t);

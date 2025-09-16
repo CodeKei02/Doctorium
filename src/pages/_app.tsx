@@ -21,7 +21,11 @@ const AppContent = ({
 };
 
 export const App = ({ Component, pageProps }: AppProps) => {
-  return <AppContent Component={Component} pageProps={pageProps} />;
+  return (
+    <>
+      <AppContent Component={Component} pageProps={pageProps} />
+    </>
+  );
 };
 
 export default App;

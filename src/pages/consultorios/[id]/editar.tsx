@@ -4,15 +4,17 @@ import ConsultorioForm from "@/components/dashboard/ConsultorioForm";
 const EditarConsultorio = () => {
   const initialState = {
     id: uuidv4(),
-    name: "Clinica Caracas",
-    address: "Calle Simon Bolivar",
-    city: "Caracas",
-    phone: "04123456789",
-    telefonoConsultorio: "041234567890",
-    direccionConsultorio: "Calle Simon Bolivar",
-    indicacionesConsultorio: "Al lado de edificio",
+    name: "",
+    address: "",
+    city: "",
+    phone: "",
+    country: "",
+    country_code: "",
+    street: "",
+    duration: "",
+    indication: "",
   };
-  return <ConsultorioForm initialState={initialState} />;
+  return <ConsultorioForm initialState={initialState} editMode={true} />;
 };
 
 export default EditarConsultorio;

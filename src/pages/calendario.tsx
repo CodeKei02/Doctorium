@@ -1,5 +1,5 @@
-import DragAndDrop from "@/components/ui/DragAndDrop";
 import { Btn } from "@/components/ui/Button";
+import DragAndDrop from "@/components/layout/DragAndDrop";
 
 const CalendarioPage = () => {
   return (
