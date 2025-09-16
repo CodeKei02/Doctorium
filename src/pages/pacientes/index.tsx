@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { Card } from "@/components/ui/Card";
+import { Btn } from "@/components/ui/Button";
 import { patients, type PatientInfo } from "@/constants/patients-info";
-
+import Link from "next/link";
 function StatusBadge({ value }: { value: PatientInfo["status"] }) {
   const base =
     "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold border";
@@ -18,15 +17,10 @@ const PacientesPage = () => {
     <div className="px-4 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Pacientes</h1>
-        <Link
-          href="/calendario"
-          className="text-sm text-[var(--primary-color)] hover:underline"
-        >
-          Agendar cita
-        </Link>
+        <Btn linkTo="/calendario">Agendar cita</Btn>
       </div>
 
-      <Card>
+      <div className="border border-gray-200 rounded-lg shadow-sm">
         <div className="divide-y">
           <div className="grid grid-cols-12 gap-2 px-3 py-2 text-xs text-gray-500">
             <div className="col-span-5">Paciente</div>
@@ -39,16 +33,11 @@ const PacientesPage = () => {
           {patients.map((p) => (
             <div
               key={p.id}
-              className="grid grid-cols-12 gap-2 items-center px-3 py-3 hover:bg-gray-50"
+              className="grid grid-cols-12 gap-2 border border-gray-200 items-center px-3 py-3 hover:bg-gray-50"
             >
               <div className="col-span-5">
                 <div className="relative group inline-block">
-                  <Link
-                    href={`/pacientes/${p.id}`}
-                    className="font-medium text-gray-900 hover:text-[var(--primary-color)]"
-                  >
-                    {p.name}
-                  </Link>
+                  <Link href={`/pacientes/${p.id}`}>{p.name}</Link>
                   {/* Hover quick view */}
                   <div
                     role="tooltip"
@@ -90,7 +79,7 @@ const PacientesPage = () => {
             </div>
           ))}
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
