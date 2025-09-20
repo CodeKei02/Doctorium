@@ -21,9 +21,7 @@ export const RecentPatients = () => {
           showHours={false}
           showIndicator={false}
           avatar={true}
-          otherClassName="font-medium"
           size="10"
-          bgColor="border border-gray-200"
         />
       </Btn>
     </Card>
