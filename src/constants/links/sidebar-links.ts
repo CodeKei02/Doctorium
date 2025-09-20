@@ -27,11 +27,6 @@ const links: SidebarLink[] = [
     label: "Pacientes",
     href: "/pacientes",
   },
-  {
-    icon: "ContentPaste",
-    label: "Plantillas Episodios",
-    href: "/plantillas",
-  },
 ];
 
 export { links };
