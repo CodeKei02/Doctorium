@@ -1,4 +1,4 @@
-# 🏥 DocGuia — Medical Management System
+# 🏥 Doctorium — Medical Management System
 
 Modern web app to manage medical offices, patients, appointments, and reusable templates.
 
@@ -65,8 +65,8 @@ corepack use pnpm@10.17.0
 ### Install
 
 ```bash
-git clone https://github.com/tu-usuario/docguia.git
-cd docguia
+git clone https://github.com/tu-usuario/Doctorium.git
+cd Doctorium
 pnpm install
 # or: npm install
 # or: yarn install
@@ -121,7 +121,6 @@ src/
       calendario.tsx              # Calendar + drag-and-drop reschedule
       consultorios/               # Offices: list/new/edit
       pacientes/                  # Patients list and detail
-      plantillas.tsx              # Templates page (can use TemplateEditor)
    stores/
       crud.ts                     # Reusable generic CRUD store helpers
       consultorio.ts              # Domain store that composes CRUD
@@ -158,7 +157,7 @@ The project is compatible with Vercel. Ensure you:
 
 MIT. See the repository license if present.
 
-# 🏥 DocGuia - Sistema de Gestión Médica
+# 🏥 Doctorium - Sistema de Gestión Médica
 
 > Plataforma web para la gestión integral de consultorios médicos, pacientes y citas.
 
