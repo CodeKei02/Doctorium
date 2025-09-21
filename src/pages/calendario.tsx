@@ -1,4 +1,3 @@
-import { Btn } from "@/components/ui/Button";
 import DragAndDrop from "@/components/layout/DragAndDrop";
 
 const CalendarioPage = () => {
@@ -9,7 +8,7 @@ const CalendarioPage = () => {
           Reprogramar citas
         </h2>
       </div>
-      
+
       <DragAndDrop />
     </>
   );

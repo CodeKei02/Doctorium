@@ -1,4 +1,3 @@
-import { Btn } from "@/components/ui/Button";
 import { patients, type PatientInfo } from "@/constants/patients-info";
 import Link from "next/link";
 function StatusBadge({ value }: { value: PatientInfo["status"] }) {
