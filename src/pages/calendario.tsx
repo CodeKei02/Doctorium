@@ -8,10 +8,8 @@ const CalendarioPage = () => {
         <h2 className="mb-4 text-lg font-semibold text-gray-900">
           Reprogramar citas
         </h2>
-        {/* Implement a modal for adding new appointments */}
-        <Btn onClick={() => {}}>Agregar cita</Btn>
       </div>
-
+      
       <DragAndDrop />
     </>
   );

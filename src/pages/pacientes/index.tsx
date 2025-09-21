@@ -17,7 +17,6 @@ const PacientesPage = () => {
     <div className="px-4 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Pacientes</h1>
-        <Btn linkTo="/calendario">Agendar cita</Btn>
       </div>
 
       <div className="border border-gray-200 rounded-lg shadow-sm">
