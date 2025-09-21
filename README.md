@@ -1,3 +1,163 @@
+# 🏥 DocGuia — Medical Management System
+
+Modern web app to manage medical offices, patients, appointments, and reusable templates.
+
+## Badges
+
+![Next.js](https://img.shields.io/badge/Next.js-15.3.5-black)
+![React](https://img.shields.io/badge/React-19.0.0-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC)
+![Zustand](https://img.shields.io/badge/State-Zustand-5.x-orange)
+![MUI](https://img.shields.io/badge/UI-MUI_7.x-007FFF)
+![TipTap](https://img.shields.io/badge/Editor-TipTap_2.x-purple)
+![pnpm](https://img.shields.io/badge/pnpm-10.x-4A4A4A)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+## Overview
+
+Doctorium helps clinicians organize their practice:
+
+- Manage medical offices (consultorios), contact info, and availability
+- Track patients, quick summaries, and details
+- Schedule and reschedule appointments with a calendar and drag-and-drop
+
+## ✨ Features
+
+- Offices (Consultorios)
+  - Create, edit, and list offices
+  - Contact and location details
+  - Availability per day and duration settings
+- Patients
+  - Patient listing with hover quick-view (age, phone, last/next visit, status)
+  - Patient detail page scaffold
+- Appointments
+  - Calendar page with drag-and-drop rescheduling (Pragmatic DnD)
+- UI/UX
+  - Responsive layout with Tailwind CSS and MUI components
+  - Reusable UI primitives and icon system
+
+## 🛠 Tech Stack
+
+- Framework: Next.js 15, React 19, TypeScript 5
+- Styling: Tailwind CSS v4, MUI v7
+- State: Zustand v5 with a reusable generic CRUD store (`src/stores/crud.ts`)
+- Forms: Formik
+- Editor: TipTap v2 (StarterKit, Placeholder)
+- Interactions: Framer Motion, Atlassian Pragmatic Drag and Drop
+- Utilities: uuid
+- Tooling: ESLint 9, pnpm 10
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.18+ (Node 20 recommended)
+- pnpm 10+ (recommended)
+
+Enable pnpm via Corepack (recommended):
+
+```bash
+corepack enable
+corepack use pnpm@10.17.0
+```
+
+### Install
+
+```bash
+git clone https://github.com/tu-usuario/docguia.git
+cd docguia
+pnpm install
+# or: npm install
+# or: yarn install
+```
+
+### Environment Variables
+
+Create `.env.local` in the project root:
+
+```env
+NEXT_PUBLIC_APP_NAME=DocGuia
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# Optional (if/when backend or database are added)
+API_BASE_URL=
+DATABASE_URL=
+```
+
+### Development
+
+```bash
+pnpm dev
+# open http://localhost:3000
+```
+
+### Build and Run
+
+```bash
+pnpm build
+pnpm start
+```
+
+### Lint
+
+```bash
+pnpm lint
+```
+
+## 📁 Project Structure
+
+```
+src/
+   components/
+      dashboard/
+      layout/
+         TemplateEditor.tsx        # TipTap-based Notion-like editor
+      ui/
+   constants/
+      patients-info.ts            # Patients mock data
+      consultorio-items.ts        # Form config for offices
+   pages/
+      calendario.tsx              # Calendar + drag-and-drop reschedule
+      consultorios/               # Offices: list/new/edit
+      pacientes/                  # Patients list and detail
+      plantillas.tsx              # Templates page (can use TemplateEditor)
+   stores/
+      crud.ts                     # Reusable generic CRUD store helpers
+      consultorio.ts              # Domain store that composes CRUD
+      sidebar.ts                  # UI store
+   styles/
+      globals.css
+```
+
+## 🧩 Notable Modules
+
+- `src/stores/crud.ts`: Generic CRUD helpers (add, update, remove, setAll, clear, getById) used to build domain stores.
+- `src/components/layout/TemplateEditor.tsx`: TipTap editor with toolbar (bold, headings, bullet/ordered lists) and placeholder.
+- `src/pages/pacientes/index.tsx`: Patients list with hover quick-view.
+- `src/pages/calendario.tsx`: Calendar page integrating drag-and-drop rescheduling.
+
+## 🔗 Useful Scripts
+
+```bash
+pnpm dev          # Start development server
+pnpm build        # Production build
+pnpm start        # Run production server
+pnpm lint         # Run ESLint
+```
+
+## Deployment
+
+The project is compatible with Vercel. Ensure you:
+
+- Set environment variables in the Vercel project
+- Use the same package manager (`pnpm`) during deploy
+- Clear build cache if you change package managers or major dependencies
+
+## License
+
+MIT. See the repository license if present.
+
 # 🏥 DocGuia - Sistema de Gestión Médica
 
 > Plataforma web para la gestión integral de consultorios médicos, pacientes y citas.
