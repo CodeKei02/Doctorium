@@ -51,12 +51,7 @@ const links: Array<{ icon: MuiIconName; label: string; href: string }> = [
   {
     icon: cardsInfo[2].icon,
     label: "Gestionar Citas",
-    href: "/citas",
-  },
-  {
-    icon: "ContentPaste",
-    label: "Gestionar Plantillas",
-    href: "/plantillas",
+    href: "/calendario",
   },
 ];
 
